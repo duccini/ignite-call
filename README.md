@@ -1,3 +1,5 @@
+![ignite call](ignite-call.png)
+
 # Ignite Call
 
 ### _Rocketseat React Course's Project_
