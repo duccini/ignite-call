@@ -8,6 +8,12 @@
 
 ## Key Concepts Learned
 
+- Nexte.js
+- React Hook Form
+- Zod
+- Stitches
+- API Routes
+- Prisma
 - [in progres...]
 
 ## Installation
