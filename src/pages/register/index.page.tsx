@@ -25,7 +25,7 @@ const registerSchema = z.object({
 
 type RegisterData = z.infer<typeof registerSchema>
 
-export default function Register() {
+export default function ConnectCalendar() {
   const {
     register,
     handleSubmit,
