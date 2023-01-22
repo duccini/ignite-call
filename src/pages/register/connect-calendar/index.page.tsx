@@ -1,4 +1,4 @@
-import { api } from '@/lib/axios'
+// import { api } from '@/lib/axios'
 import { Button, Heading, MultiStep, Text } from '@ignite-ui/react'
 import { ArrowRight } from 'phosphor-react'
 import { Header, RegisterContainer } from '../styles'
@@ -11,12 +11,15 @@ export default function Register() {
   const router = useRouter()
 
   const hasAuthError = !!router.query.error
-  const isSignedIn = session.status === 'authenticated'
 
-  console.log(session)
+  const isSignedIn = session.status === 'authenticated'
 
   async function handleConnectCalendar() {
     await signIn('google')
+  }
+
+  async function handleContinueRegister() {
+    await router.push('/register/time-intervals')
   }
 
   return (
@@ -51,12 +54,18 @@ export default function Register() {
           )}
         </ConnectItem>
 
-        <AuthError size="md">
-          Falha ao se conectar com o Goggle, verifique se você habilitou as
-          permissões de acesso ao Google Calendar
-        </AuthError>
+        {hasAuthError && (
+          <AuthError size="md">
+            Falha ao se conectar ao Google, verifique se você habilitou as
+            permissões de acesso ao Google Calendar
+          </AuthError>
+        )}
 
-        <Button type="submit" disabled={!isSignedIn}>
+        <Button
+          onClick={handleContinueRegister}
+          type="submit"
+          disabled={!isSignedIn}
+        >
           Próximo passo
           <ArrowRight />
         </Button>

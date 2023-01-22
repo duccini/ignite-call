@@ -11,6 +11,7 @@ import {
   Text,
   TextInput,
 } from '@ignite-ui/react'
+import { useRouter } from 'next/router'
 
 import { ArrowRight } from 'phosphor-react'
 
@@ -99,6 +100,7 @@ export default function TimeIntervals() {
   })
 
   const weekDays = getWeekDays()
+  const router = useRouter()
 
   const intervals = watch('intervals')
 
@@ -106,10 +108,10 @@ export default function TimeIntervals() {
     const { intervals } = data as TimeInternalsFormOutput
 
     try {
-      const response = await api.post('/users/time-intervals', {
+      await api.post('/users/time-intervals', {
         intervals,
       })
-      console.log(response)
+      await router.push('/register/update-profile')
     } catch (error) {
       console.log(error)
     }
